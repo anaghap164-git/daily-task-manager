@@ -1,0 +1,922 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Task Manager — Pending Tasks</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'light-primary': '#022448',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1E3A5F',
+        'light-on-primary-container': '#8AA4CF',
+        'light-secondary': '#555F70',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#D6E0F4',
+        'light-on-secondary-container': '#5A6374',
+        'light-tertiary': '#341F00',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#503300',
+        'light-on-tertiary-container': '#C69B5F',
+        'light-error': '#B91C1C',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000B',
+        'light-background': '#F8F9FF',
+        'light-on-background': '#0B1C30',
+        'light-surface': '#F8F9FF',
+        'light-surface-dim': '#CBDBF5',
+        'light-surface-bright': '#F8F9FF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#EFF4FF',
+        'light-surface-container': '#E5EEFF',
+        'light-surface-container-high': '#DCE9FF',
+        'light-surface-container-highest': '#D3E4FE',
+        'light-on-surface': '#0B1C30',
+        'light-surface-variant': '#E0E2EB',
+        'light-on-surface-variant': '#43474E',
+        'light-outline': '#74777F',
+        'light-outline-variant': '#C4C6CF',
+        'light-inverse-surface': '#213145',
+        'light-inverse-on-surface': '#EAF1FF',
+        'light-inverse-primary': '#ADC8F5',
+        'light-shadow': '#000000',
+        'light-scrim': '#000000',
+        'light-success': '#006C4C',
+        'light-on-success': '#FFFFFF',
+        'light-success-container': '#89F8C7',
+        'light-on-success-container': '#002114',
+        'light-warning': '#A33D22',
+        'light-on-warning': '#FFFFFF',
+        'light-warning-container': '#FFDBD2',
+        'light-on-warning-container': '#3C0800',
+        'dark-primary': '#ADC8F5',
+        'dark-on-primary': '#133155',
+        'dark-primary-container': '#1E3A5F',
+        'dark-on-primary-container': '#8AA4CF',
+        'dark-secondary': '#BDC7DA',
+        'dark-on-secondary': '#273140',
+        'dark-secondary-container': '#40495A',
+        'dark-on-secondary-container': '#AFB9CC',
+        'dark-tertiary': '#EDBF7F',
+        'dark-on-tertiary': '#452B00',
+        'dark-tertiary-container': '#503300',
+        'dark-on-tertiary-container': '#C69B5F',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000B',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#031427',
+        'dark-on-background': '#D3E4FE',
+        'dark-surface': '#031427',
+        'dark-surface-dim': '#031427',
+        'dark-surface-bright': '#2A3A4F',
+        'dark-surface-container-lowest': '#000F21',
+        'dark-surface-container-low': '#0B1C30',
+        'dark-surface-container': '#102034',
+        'dark-surface-container-high': '#1B2B3F',
+        'dark-surface-container-highest': '#26364A',
+        'dark-on-surface': '#D3E4FE',
+        'dark-surface-variant': '#43474E',
+        'dark-on-surface-variant': '#C4C6CF',
+        'dark-outline': '#8E9199',
+        'dark-outline-variant': '#43474E',
+        'dark-inverse-surface': '#D3E4FE',
+        'dark-inverse-on-surface': '#213145',
+        'dark-inverse-primary': '#455F87',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+        'dark-success': '#6CDBAC',
+        'dark-on-success': '#003826',
+        'dark-success-container': '#005138',
+        'dark-on-success-container': '#89F8C7',
+        'dark-warning': '#FFB4A2',
+        'dark-on-warning': '#611200',
+        'dark-warning-container': '#83260D',
+        'dark-on-warning-container': '#FFDBD2',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Mulish"', 'sans-serif'],
+        'headline': ['"Mulish"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-sm': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-sm-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-sm': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.25px', fontWeight: '500' }],
+        'mono-sm': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '220ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Mulish:wght@600;700&amp;family=Source+Code+Pro:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+
+  <div class="min-h-[1024px] flex bg-light-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Left Sidebar (Navy Blue — exact parity with existing screens) -->
+    <aside id="sidebar" class="hidden lg:flex lg:flex-col lg:w-64 bg-light-primary text-light-on-primary min-h-[1024px] shrink-0 border-r border-light-primary-container" data-stitch-vh="min-h-[1024px]===min-h-screen">
+      <!-- Sidebar Brand Area -->
+      <div class="h-16 px-gutter-lg flex items-center gap-3 border-b border-light-primary-container">
+        <div class="w-9 h-9 rounded bg-light-on-primary flex items-center justify-center text-light-primary shrink-0">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">task_alt</span>
+        </div>
+        <div class="min-w-0">
+          <span class="font-headline text-title-md text-light-on-primary block leading-tight" data-design-text-token="title-md">Daily Task Manager</span>
+        </div>
+      </div>
+
+      <!-- Primary Navigation -->
+      <nav aria-label="Main navigation" class="flex-1 px-gutter-md py-gutter-lg flex flex-col gap-gutter-xs">
+        <a href="../daily_task_manager_dashboard/code.html" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">dashboard</span>
+          <span class="font-label text-label-lg" data-design-text-token="label-lg">Dashboard</span>
+        </a>
+
+        <a href="../daily_task_manager_my_tasks/code.html" class="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">assignment</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">My Tasks</span>
+          </span>
+          <span class="font-label text-label-sm tabular-nums opacity-90" data-design-text-token="label-sm">25</span>
+        </a>
+
+        <a href="../daily_task_manager_completed_tasks/code.html" class="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">check_circle</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Completed Tasks</span>
+          </span>
+          <span class="font-label text-label-sm tabular-nums opacity-90" data-design-text-token="label-sm">12</span>
+        </a>
+
+        <a href="../daily_task_manager_pending_tasks/code.html" aria-current="page" class="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded bg-light-primary-container text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">pending_actions</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Pending Tasks</span>
+          </span>
+          <span class="font-label text-label-sm tabular-nums opacity-90" data-design-text-token="label-sm">8</span>
+        </a>
+
+        <div class="my-gutter-sm border-t border-light-primary-container"></div>
+
+        <a href="../daily_task_manager_application_settings/code.html" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">settings</span>
+          <span class="font-label text-label-lg" data-design-text-token="label-lg">Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="p-gutter-md border-t border-light-primary-container">
+        <div class="rounded-md bg-light-primary-container/70 p-gutter-md flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-md text-light-on-primary" data-design-text-token="label-md">Daily Progress</span>
+          <div class="flex items-center justify-between">
+            <span class="font-body text-body-sm text-light-on-primary-container" data-design-text-token="body-sm">12 of 25 done</span>
+            <span class="font-label text-label-sm text-light-on-primary tabular-nums" data-design-text-token="label-sm">48%</span>
+          </div>
+          <div class="w-full h-1.5 rounded-full bg-light-primary overflow-hidden mt-1">
+            <div class="h-full bg-light-on-primary rounded-full" style="width: 48%;"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Column (Top Header + Pending Tasks Workspace) -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- Sticky Top Header (exact parity with existing screens) -->
+      <header class="sticky top-0 z-20 h-16 bg-light-surface-container-lowest border-b border-light-outline-variant/60 px-gutter-lg flex items-center justify-between gap-gutter-lg">
+        <!-- Left: Mobile menu + Daily Task Manager Logo/Name -->
+        <div class="flex items-center gap-gutter-md min-w-0">
+          <button type="button" aria-label="Toggle navigation" class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded text-light-on-surface hover:bg-light-surface-container-low">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">menu</span>
+          </button>
+          <div class="flex items-center gap-2.5">
+            <div class="lg:hidden w-8 h-8 rounded bg-light-primary flex items-center justify-center text-light-on-primary shrink-0">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">task_alt</span>
+            </div>
+            <h1 class="font-headline text-headline-sm text-light-primary tracking-tight" data-design-text-token="headline-sm">Daily Task Manager</h1>
+          </div>
+        </div>
+
+        <!-- Center: Search Bar -->
+        <div class="hidden sm:block flex-1 max-w-md">
+          <!-- COMPONENT: searchbar-standard -->
+          <form data-component-id="searchbar-standard" data-component-type="searchbar" data-component-variant="standard" role="search" onsubmit="event.preventDefault();" class="relative flex items-center w-full">
+            <span class="material-symbols-outlined text-[18px] text-light-on-surface-variant absolute left-3 pointer-events-none" aria-hidden="true">search</span>
+            <input id="headerSearchInput" type="search" aria-label="Search tasks" placeholder="Search tasks, dates, or priorities..." class="w-full pl-10 pr-4 py-2 rounded bg-light-surface-container-low border border-light-outline-variant/80 text-light-on-surface placeholder:text-light-on-surface-variant font-body text-body-md focus:outline-none focus:bg-light-surface-container-lowest focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+          </form>
+        </div>
+
+        <!-- Right: Notification Icon & User Profile -->
+        <div class="flex items-center gap-gutter-md shrink-0">
+          <div class="relative">
+            <button type="button" aria-label="Notifications (3 unread)" class="relative inline-flex items-center justify-center w-9 h-9 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-primary transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">notifications</span>
+              <!-- COMPONENT: badge-dot -->
+              <span data-component-id="badge-dot" data-component-type="badge" data-component-variant="dot" role="status" aria-label="Unread notifications" class="absolute top-1.5 right-1.5 inline-block w-2 h-2 rounded-full bg-light-error ring-2 ring-light-surface-container-lowest"></span>
+            </button>
+          </div>
+
+          <div class="h-6 w-px bg-light-outline-variant/70"></div>
+
+          <div class="flex items-center gap-2.5">
+            <img src="../girly.jpg" alt="Alex Morgan" class="w-9 h-9 rounded-full object-cover border border-light-outline-variant/70 shrink-0">
+            <div class="hidden md:flex flex-col">
+              <span class="font-title text-title-sm text-light-on-surface leading-tight" data-design-text-token="title-sm">Alex Morgan</span>
+              <span class="font-body text-body-sm text-light-on-surface-variant leading-tight" data-design-text-token="body-sm">Operations Lead</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-gutter-lg flex flex-col gap-gutter-lg max-w-[1440px] w-full mx-auto">
+
+        <!-- Page Title Row -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-gutter-md">
+          <div>
+            <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Pending Tasks</h2>
+            <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Monitor upcoming deadlines, prioritize tasks due today, and resolve overdue items.</p>
+          </div>
+
+          <!-- COMPONENT: button-with-icon -->
+          <a href="../daily_task_manager_add_new_task/code.html" data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" class="inline-flex items-center justify-center gap-gutter-sm px-gutter-md py-2.5 rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-primary focus-visible:ring-offset-2 transition-colors duration-state-change ease-state-change shadow-sm shrink-0">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Add New Task</span>
+          </a>
+        </div>
+
+        <!-- Summary Cards (Total Pending Tasks, Due Today, Due This Week, Overdue Tasks) -->
+        <section aria-label="Pending tasks summary" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-lg items-stretch">
+          <!-- Total Pending Tasks -->
+          <!-- COMPONENT: card-elevated -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-md h-full">
+            <header class="flex items-center justify-between gap-gutter-xs">
+              <h3 class="font-label text-label-sm text-light-on-surface-variant uppercase" data-design-text-token="label-sm">Total Pending Tasks</h3>
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded bg-light-surface-container-low text-light-primary shrink-0">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">pending_actions</span>
+              </span>
+            </header>
+            <div class="flex items-center justify-between gap-gutter-sm">
+              <p class="font-headline text-display-sm text-light-on-surface tabular-nums" data-design-text-token="display-sm">8</p>
+              <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Open deliverables</span>
+            </div>
+          </article>
+
+          <!-- Due Today -->
+          <!-- COMPONENT: card-elevated -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-warning/40 rounded-md p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-md h-full">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <h3 class="font-label text-label-md text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-md">Due Today</h3>
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-warning-container text-light-on-warning-container">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">today</span>
+              </span>
+            </header>
+            <div class="flex items-center justify-between gap-gutter-sm">
+              <p class="font-headline text-display-sm text-light-warning tabular-nums" data-design-text-token="display-sm">2</p>
+              <span class="font-body text-body-sm text-light-warning" data-design-text-token="body-sm">Nov 23, 2026</span>
+            </div>
+          </article>
+
+          <!-- Due This Week -->
+          <!-- COMPONENT: card-elevated -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-md h-full">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <h3 class="font-label text-label-md text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-md">Due This Week</h3>
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-secondary-container text-light-on-secondary-container">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">date_range</span>
+              </span>
+            </header>
+            <div class="flex items-center justify-between gap-gutter-sm">
+              <p class="font-headline text-display-sm text-light-on-surface tabular-nums" data-design-text-token="display-sm">4</p>
+              <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Nov 24 – Nov 29</span>
+            </div>
+          </article>
+
+          <!-- Overdue Tasks -->
+          <!-- COMPONENT: card-elevated -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-error/40 rounded-md p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-md h-full">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <h3 class="font-label text-label-md text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-md">Overdue Tasks</h3>
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-error-container text-light-on-error-container">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">warning</span>
+              </span>
+            </header>
+            <div class="flex items-center justify-between gap-gutter-sm">
+              <p class="font-headline text-display-sm text-light-error tabular-nums" data-design-text-token="display-sm">5</p>
+              <span class="font-body text-body-sm text-light-error" data-design-text-token="body-sm">Action required</span>
+            </div>
+          </article>
+        </section>
+
+        <!-- Search, Filters & Pending Tasks Table Card -->
+        <section aria-label="Pending tasks list" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md shadow-sm overflow-hidden">
+
+          <!-- Search & Filter Controls -->
+          <div class="p-gutter-lg border-b border-light-outline-variant/60 bg-light-surface-container-low/40 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-md">
+            <!-- Search by Task Name -->
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="searchPendingInput" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Search by Task Name</label>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined text-[18px] text-light-on-surface-variant absolute left-3 pointer-events-none" aria-hidden="true">search</span>
+                <input id="searchPendingInput" type="search" placeholder="Search pending tasks..." class="w-full pl-9 pr-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-on-surface-variant font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+              </div>
+            </div>
+
+            <!-- Filter by Employee -->
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="employeeFilter" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Filter by Employee</label>
+              <select id="employeeFilter" class="w-full px-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+                <option value="all">All Employees</option>
+                <option value="Alex Morgan">Alex Morgan</option>
+                <option value="Priya Nair">Priya Nair</option>
+                <option value="Marcus Vance">Marcus Vance</option>
+                <option value="Elena Rostova">Elena Rostova</option>
+                <option value="David Kim">David Kim</option>
+              </select>
+            </div>
+
+            <!-- Filter by Priority -->
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="priorityFilter" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Filter by Priority</label>
+              <select id="priorityFilter" class="w-full px-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+                <option value="all">All Priorities</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+
+            <!-- Filter by Due Date -->
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="dueDateFilter" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Filter by Due Date</label>
+              <select id="dueDateFilter" class="w-full px-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+                <option value="all">All Due Dates</option>
+                <option value="overdue">Overdue (Before Nov 23)</option>
+                <option value="today">Due Today (Nov 23)</option>
+                <option value="week">Due This Week (Nov 24 – Nov 29)</option>
+                <option value="later">Due Later (Nov 30+)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- COMPONENT: table-standard -->
+          <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-light-surface-container-low border-b border-light-outline-variant/70">
+                  <th scope="col" class="px-4 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Task Name</span>
+                  </th>
+                  <th scope="col" class="px-3 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Assigned Employee</span>
+                  </th>
+                  <th scope="col" class="px-3 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Assigned</span>
+                  </th>
+                  <th scope="col" class="px-3 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Due Date</span>
+                  </th>
+                  <th scope="col" class="px-3 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Priority</span>
+                  </th>
+                  <th scope="col" class="px-3 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Status</span>
+                  </th>
+                  <th scope="col" class="px-4 py-3.5 text-right font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Actions</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="pendingTasksBody" class="divide-y divide-light-outline-variant/40">
+
+                <!-- Row 1: Overdue (Highlighted in Red) -->
+                <tr class="task-row bg-light-error-container/25 hover:bg-light-error-container/40 transition-colors duration-state-change ease-state-change" data-title="finalize q4 budget forecast" data-employee="Priya Nair" data-priority="High" data-due="overdue">
+                  <td class="px-4 py-4">
+                    <div class="flex items-center gap-2">
+                      <span class="material-symbols-outlined text-[18px] text-light-error shrink-0" aria-hidden="true">warning</span>
+                      <span class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">Finalize Q4 Budget Forecast</span>
+                    </div>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Priya Nair</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 12, 2026</span>
+                  </td>
+                  <td class="px-3 py-4 font-label text-label-sm text-light-error tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 20, 2026</span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-light-error-container text-light-on-error-container font-label text-label-sm" data-design-text-token="label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-error" aria-hidden="true"></span>
+                      <span>High</span>
+                    </span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span data-component-id="badge-error" data-component-type="badge" data-component-variant="error" role="status" class="inline-flex items-center px-2.5 py-1 rounded-full bg-light-error text-light-on-error font-label text-label-sm">
+                      <span data-design-text-token="label-sm">Overdue</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Finalize Q4 Budget Forecast" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-lowest hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="Edit Task" aria-label="Edit Finalize Q4 Budget Forecast" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-lowest hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit</span>
+                      </button>
+                      <button type="button" title="Mark as Completed" aria-label="Mark Finalize Q4 Budget Forecast as Completed" class="mark-complete-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-primary bg-light-surface-container-lowest border border-light-outline-variant hover:bg-light-success-container hover:text-light-on-success-container hover:border-light-success transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 2: Due Today (Highlighted in Orange) -->
+                <tr class="task-row bg-light-warning-container/35 hover:bg-light-warning-container/50 transition-colors duration-state-change ease-state-change" data-title="quarterly vendor compliance review" data-employee="Alex Morgan" data-priority="High" data-due="today">
+                  <td class="px-4 py-4">
+                    <div class="flex items-center gap-2">
+                      <span class="material-symbols-outlined text-[18px] text-light-warning shrink-0" aria-hidden="true">today</span>
+                      <span class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">Quarterly Vendor Compliance</span>
+                    </div>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Alex Morgan</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 17, 2026</span>
+                  </td>
+                  <td class="px-3 py-4 font-label text-label-sm text-light-warning tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 23, 2026</span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-light-error-container text-light-on-error-container font-label text-label-sm" data-design-text-token="label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-error" aria-hidden="true"></span>
+                      <span>High</span>
+                    </span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span data-component-id="badge-warning-solid" data-component-type="badge" data-component-variant="warning-solid" role="status" class="inline-flex items-center px-2.5 py-1 rounded-full bg-light-warning text-light-on-warning font-label text-label-sm">
+                      <span data-design-text-token="label-sm">Due Today</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Quarterly Vendor Compliance" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-lowest hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="Edit Task" aria-label="Edit Quarterly Vendor Compliance" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-lowest hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit</span>
+                      </button>
+                      <button type="button" title="Mark as Completed" aria-label="Mark Quarterly Vendor Compliance as Completed" class="mark-complete-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-primary bg-light-surface-container-lowest border border-light-outline-variant hover:bg-light-success-container hover:text-light-on-success-container hover:border-light-success transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 3: Due Today (Highlighted in Orange) -->
+                <tr class="task-row bg-light-warning-container/35 hover:bg-light-warning-container/50 transition-colors duration-state-change ease-state-change" data-title="incident response drill sign-off" data-employee="Marcus Vance" data-priority="Medium" data-due="today">
+                  <td class="px-4 py-4">
+                    <div class="flex items-center gap-2">
+                      <span class="material-symbols-outlined text-[18px] text-light-warning shrink-0" aria-hidden="true">today</span>
+                      <span class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">Incident Response Drill</span>
+                    </div>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Marcus Vance</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 18, 2026</span>
+                  </td>
+                  <td class="px-3 py-4 font-label text-label-sm text-light-warning tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 23, 2026</span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-light-warning-container text-light-on-warning-container font-label text-label-sm" data-design-text-token="label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-warning" aria-hidden="true"></span>
+                      <span>Medium</span>
+                    </span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span data-component-id="badge-warning-solid" data-component-type="badge" data-component-variant="warning-solid" role="status" class="inline-flex items-center px-2.5 py-1 rounded-full bg-light-warning text-light-on-warning font-label text-label-sm">
+                      <span data-design-text-token="label-sm">Due Today</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Incident Response Drill" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-lowest hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="Edit Task" aria-label="Edit Incident Response Drill" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-lowest hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit</span>
+                      </button>
+                      <button type="button" title="Mark as Completed" aria-label="Mark Incident Response Drill as Completed" class="mark-complete-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-primary bg-light-surface-container-lowest border border-light-outline-variant hover:bg-light-success-container hover:text-light-on-success-container hover:border-light-success transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 4: Overdue (Highlighted in Red) -->
+                <tr class="task-row bg-light-error-container/25 hover:bg-light-error-container/40 transition-colors duration-state-change ease-state-change" data-title="api rate limit documentation" data-employee="David Kim" data-priority="Low" data-due="overdue">
+                  <td class="px-4 py-4">
+                    <div class="flex items-center gap-2">
+                      <span class="material-symbols-outlined text-[18px] text-light-error shrink-0" aria-hidden="true">warning</span>
+                      <span class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">API Rate Limit Documentation</span>
+                    </div>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">David Kim</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 11, 2026</span>
+                  </td>
+                  <td class="px-3 py-4 font-label text-label-sm text-light-error tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 19, 2026</span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-light-surface-variant text-light-on-surface-variant font-label text-label-sm" data-design-text-token="label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-secondary" aria-hidden="true"></span>
+                      <span>Low</span>
+                    </span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span data-component-id="badge-error" data-component-type="badge" data-component-variant="error" role="status" class="inline-flex items-center px-2.5 py-1 rounded-full bg-light-error text-light-on-error font-label text-label-sm">
+                      <span data-design-text-token="label-sm">Overdue</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for API Rate Limit Documentation" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-lowest hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="Edit Task" aria-label="Edit API Rate Limit Documentation" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-lowest hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit</span>
+                      </button>
+                      <button type="button" title="Mark as Completed" aria-label="Mark API Rate Limit Documentation as Completed" class="mark-complete-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-primary bg-light-surface-container-lowest border border-light-outline-variant hover:bg-light-success-container hover:text-light-on-success-container hover:border-light-success transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 5: Pending (This Week) -->
+                <tr class="task-row hover:bg-light-surface-container-low/60 transition-colors duration-state-change ease-state-change" data-title="client onboarding checklist" data-employee="Elena Rostova" data-priority="High" data-due="week">
+                  <td class="px-4 py-4">
+                    <span class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">Client Onboarding Checklist</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Elena Rostova</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 18, 2026</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 25, 2026</span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-light-error-container text-light-on-error-container font-label text-label-sm" data-design-text-token="label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-error" aria-hidden="true"></span>
+                      <span>High</span>
+                    </span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span data-component-id="badge-warning" data-component-type="badge" data-component-variant="warning" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-warning-container text-light-on-warning-container font-label text-label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-warning" aria-hidden="true"></span>
+                      <span data-design-text-token="label-sm">Pending</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Client Onboarding Checklist" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="Edit Task" aria-label="Edit Client Onboarding Checklist" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit</span>
+                      </button>
+                      <button type="button" title="Mark as Completed" aria-label="Mark Client Onboarding Checklist as Completed" class="mark-complete-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-primary bg-light-surface-container-lowest border border-light-outline-variant hover:bg-light-success-container hover:text-light-on-success-container hover:border-light-success transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 6: Pending (This Week) -->
+                <tr class="task-row hover:bg-light-surface-container-low/60 transition-colors duration-state-change ease-state-change" data-title="vendor contract renewal" data-employee="Alex Morgan" data-priority="Medium" data-due="week">
+                  <td class="px-4 py-4">
+                    <span class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">Vendor Contract Renewal</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Alex Morgan</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 19, 2026</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 27, 2026</span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-light-warning-container text-light-on-warning-container font-label text-label-sm" data-design-text-token="label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-warning" aria-hidden="true"></span>
+                      <span>Medium</span>
+                    </span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span data-component-id="badge-warning" data-component-type="badge" data-component-variant="warning" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-warning-container text-light-on-warning-container font-label text-label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-warning" aria-hidden="true"></span>
+                      <span data-design-text-token="label-sm">Pending</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Vendor Contract Renewal" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="Edit Task" aria-label="Edit Vendor Contract Renewal" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit</span>
+                      </button>
+                      <button type="button" title="Mark as Completed" aria-label="Mark Vendor Contract Renewal as Completed" class="mark-complete-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-primary bg-light-surface-container-lowest border border-light-outline-variant hover:bg-light-success-container hover:text-light-on-success-container hover:border-light-success transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 7: Pending (Later) -->
+                <tr class="task-row hover:bg-light-surface-container-low/60 transition-colors duration-state-change ease-state-change" data-title="december capacity planning" data-employee="David Kim" data-priority="Low" data-due="later">
+                  <td class="px-4 py-4">
+                    <span class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">December Capacity Planning</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">David Kim</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 21, 2026</span>
+                  </td>
+                  <td class="px-3 py-4 font-body text-body-sm text-light-on-surface tabular-nums">
+                    <span data-design-text-token="body-sm">Dec 02, 2026</span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-light-surface-variant text-light-on-surface-variant font-label text-label-sm" data-design-text-token="label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-secondary" aria-hidden="true"></span>
+                      <span>Low</span>
+                    </span>
+                  </td>
+                  <td class="px-3 py-4">
+                    <span data-component-id="badge-warning" data-component-type="badge" data-component-variant="warning" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-warning-container text-light-on-warning-container font-label text-label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-warning" aria-hidden="true"></span>
+                      <span data-design-text-token="label-sm">Pending</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for December Capacity Planning" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="Edit Task" aria-label="Edit December Capacity Planning" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit</span>
+                      </button>
+                      <button type="button" title="Mark as Completed" aria-label="Mark December Capacity Planning as Completed" class="mark-complete-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-primary bg-light-surface-container-lowest border border-light-outline-variant hover:bg-light-success-container hover:text-light-on-success-container hover:border-light-success transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Footer -->
+          <div class="px-gutter-lg py-3.5 bg-light-surface-container-low/50 border-t border-light-outline-variant/60 flex items-center justify-between gap-gutter-md">
+            <span id="pendingCountSummary" class="font-body text-body-sm text-light-on-surface-variant tabular-nums" data-design-text-token="body-sm">Showing 7 of 8 pending tasks</span>
+            <div class="flex items-center gap-gutter-xs" role="navigation" aria-label="Pagination">
+              <button type="button" class="px-3 py-1 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface-variant font-label text-label-sm hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change">Previous</button>
+              <button type="button" aria-current="page" class="px-3 py-1 rounded border border-light-primary bg-light-primary text-light-on-primary font-label text-label-sm tabular-nums">1</button>
+              <button type="button" class="px-3 py-1 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface-variant font-label text-label-sm hover:bg-light-surface-container-low tabular-nums transition-colors duration-state-change ease-state-change">2</button>
+              <button type="button" class="px-3 py-1 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface-variant font-label text-label-sm hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change">Next</button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Task Details & Confirmation Modals -->
+  <div id="taskDetailsModal" class="hidden fixed inset-0 z-40 bg-light-scrim/40 flex items-center justify-center p-gutter-md" role="dialog" aria-modal="true" aria-labelledby="taskDetailsTitle">
+    <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-md shadow-xl w-full max-w-md overflow-hidden">
+      <div class="px-gutter-lg py-gutter-md border-b border-light-outline-variant/60 flex items-center justify-between">
+        <h3 id="taskDetailsTitle" class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Task Details</h3>
+        <button type="button" id="closeTaskDetailsModal" aria-label="Close modal" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="p-gutter-lg flex flex-col gap-gutter-md">
+        <div>
+          <span class="font-label text-label-sm text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-sm">Task Name</span>
+          <p id="detailTaskName" class="font-title text-title-md text-light-on-surface mt-0.5" data-design-text-token="title-md"></p>
+        </div>
+        <div class="grid grid-cols-2 gap-gutter-md">
+          <div>
+            <span class="font-label text-label-sm text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-sm">Assigned Employee</span>
+            <p id="detailEmployee" class="font-body text-body-md text-light-on-surface mt-0.5" data-design-text-token="body-md"></p>
+          </div>
+          <div>
+            <span class="font-label text-label-sm text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-sm">Due Date</span>
+            <p id="detailDueDate" class="font-body text-body-md text-light-on-surface mt-0.5 tabular-nums" data-design-text-token="body-md"></p>
+          </div>
+        </div>
+        <div class="flex items-center justify-end gap-gutter-sm pt-gutter-sm border-t border-light-outline-variant/60">
+          <a href="../daily_task_manager_add_new_task/code.html" class="px-gutter-md py-2 rounded bg-light-primary text-light-on-primary font-label text-label-lg hover:bg-light-primary-container">Edit Task</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmCompleteModal" class="hidden fixed inset-0 z-40 bg-light-scrim/40 flex items-center justify-center p-gutter-md" role="dialog" aria-modal="true" aria-labelledby="confirmCompleteTitle">
+    <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-md shadow-xl w-full max-w-sm overflow-hidden">
+      <div class="px-gutter-lg py-gutter-md border-b border-light-outline-variant/60">
+        <h3 id="confirmCompleteTitle" class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Confirm Completion</h3>
+      </div>
+      <div class="p-gutter-lg flex flex-col gap-gutter-md">
+        <p id="confirmCompleteText" class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Are you sure you want to mark this task as completed?</p>
+        <div class="flex items-center justify-end gap-gutter-sm">
+          <button type="button" id="cancelCompleteBtn" class="px-gutter-md py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-primary font-label text-label-lg hover:bg-light-surface-container-low">Cancel</button>
+          <button type="button" id="confirmCompleteBtn" class="px-gutter-md py-2 rounded bg-light-primary text-light-on-primary font-label text-label-lg hover:bg-light-primary-container">Mark Completed</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const searchInput = document.getElementById('searchPendingInput');
+      const headerSearchInput = document.getElementById('headerSearchInput');
+      const employeeFilter = document.getElementById('employeeFilter');
+      const priorityFilter = document.getElementById('priorityFilter');
+      const dueDateFilter = document.getElementById('dueDateFilter');
+      const tableBody = document.getElementById('pendingTasksBody');
+      const countSummary = document.getElementById('pendingCountSummary');
+      const detailsModal = document.getElementById('taskDetailsModal');
+      const closeDetailsModal = document.getElementById('closeTaskDetailsModal');
+      const confirmModal = document.getElementById('confirmCompleteModal');
+      const cancelCompleteBtn = document.getElementById('cancelCompleteBtn');
+      const confirmCompleteBtn = document.getElementById('confirmCompleteBtn');
+      let pendingRow = null;
+      let pendingBtn = null;
+
+      function applyFilters() {
+        const query = (searchInput.value || headerSearchInput.value || '').trim().toLowerCase();
+        const emp = employeeFilter.value;
+        const prio = priorityFilter.value;
+        const due = dueDateFilter.value;
+        const rows = tableBody.querySelectorAll('.task-row');
+        let visible = 0;
+
+        rows.forEach((row) => {
+          const matchTitle = !query || (row.getAttribute('data-title') || '').includes(query);
+          const matchEmp = emp === 'all' || row.getAttribute('data-employee') === emp;
+          const matchPrio = prio === 'all' || row.getAttribute('data-priority') === prio;
+          const matchDue = due === 'all' || row.getAttribute('data-due') === due;
+
+          if (matchTitle && matchEmp && matchPrio && matchDue) {
+            row.classList.remove('hidden');
+            visible++;
+          } else {
+            row.classList.add('hidden');
+          }
+        });
+
+        countSummary.textContent = 'Showing ' + visible + ' of 8 pending tasks';
+      }
+
+      [searchInput, headerSearchInput].forEach((el) => {
+        if (el) el.addEventListener('input', applyFilters);
+      });
+      [employeeFilter, priorityFilter, dueDateFilter].forEach((el) => {
+        if (el) el.addEventListener('change', applyFilters);
+      });
+
+      closeDetailsModal.addEventListener('click', () => detailsModal.classList.add('hidden'));
+      cancelCompleteBtn.addEventListener('click', () => {
+        confirmModal.classList.add('hidden');
+        pendingRow = null;
+        pendingBtn = null;
+      });
+
+      confirmCompleteBtn.addEventListener('click', () => {
+        if (!pendingRow || !pendingBtn) return;
+        pendingRow.classList.remove('bg-light-error-container/25', 'hover:bg-light-error-container/40', 'bg-light-warning-container/35', 'hover:bg-light-warning-container/50');
+        pendingRow.classList.add('hover:bg-light-surface-container-low/60');
+
+        const statusCell = pendingRow.querySelector('td:nth-child(6)');
+        statusCell.innerHTML = `
+          <span data-component-id="badge-success" data-component-type="badge" data-component-variant="success" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-light-success" aria-hidden="true"></span>
+            <span data-design-text-token="label-sm">Completed</span>
+          </span>
+        `;
+        pendingBtn.remove();
+        confirmModal.classList.add('hidden');
+        pendingRow = null;
+        pendingBtn = null;
+      });
+
+      tableBody.addEventListener('click', (e) => {
+        const viewBtn = e.target.closest('button[title="View Task Details"]');
+        if (viewBtn) {
+          const row = viewBtn.closest('.task-row');
+          document.getElementById('detailTaskName').textContent = row.querySelector('td:nth-child(1) span:last-child').textContent;
+          document.getElementById('detailEmployee').textContent = row.getAttribute('data-employee');
+          document.getElementById('detailDueDate').textContent = row.querySelector('td:nth-child(4) span').textContent;
+          detailsModal.classList.remove('hidden');
+          return;
+        }
+        const editBtn = e.target.closest('button[title="Edit Task"]');
+        if (editBtn) {
+          window.location.href = '../add-new-task/AddNewTask.html';
+          return;
+        }
+        const btn = e.target.closest('.mark-complete-btn');
+        if (btn) {
+          pendingRow = btn.closest('.task-row');
+          pendingBtn = btn;
+          const title = pendingRow.querySelector('td:nth-child(1) span:last-child').textContent;
+          document.getElementById('confirmCompleteText').textContent = 'Are you sure you want to mark "' + title + '" as completed?';
+          confirmModal.classList.remove('hidden');
+        }
+      });
+    })();
+  </script>
+
+
+</body></html>

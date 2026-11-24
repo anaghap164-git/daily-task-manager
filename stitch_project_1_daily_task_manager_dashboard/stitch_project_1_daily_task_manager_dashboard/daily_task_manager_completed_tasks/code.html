@@ -1,0 +1,780 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Task Manager — Completed Tasks</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'light-primary': '#022448',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1E3A5F',
+        'light-on-primary-container': '#8AA4CF',
+        'light-secondary': '#555F70',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#D6E0F4',
+        'light-on-secondary-container': '#5A6374',
+        'light-tertiary': '#341F00',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#503300',
+        'light-on-tertiary-container': '#C69B5F',
+        'light-error': '#B91C1C',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000B',
+        'light-background': '#F8F9FF',
+        'light-on-background': '#0B1C30',
+        'light-surface': '#F8F9FF',
+        'light-surface-dim': '#CBDBF5',
+        'light-surface-bright': '#F8F9FF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#EFF4FF',
+        'light-surface-container': '#E5EEFF',
+        'light-surface-container-high': '#DCE9FF',
+        'light-surface-container-highest': '#D3E4FE',
+        'light-on-surface': '#0B1C30',
+        'light-surface-variant': '#E0E2EB',
+        'light-on-surface-variant': '#43474E',
+        'light-outline': '#74777F',
+        'light-outline-variant': '#C4C6CF',
+        'light-inverse-surface': '#213145',
+        'light-inverse-on-surface': '#EAF1FF',
+        'light-inverse-primary': '#ADC8F5',
+        'light-shadow': '#000000',
+        'light-scrim': '#000000',
+        'light-success': '#006C4C',
+        'light-on-success': '#FFFFFF',
+        'light-success-container': '#89F8C7',
+        'light-on-success-container': '#002114',
+        'light-warning': '#A33D22',
+        'light-on-warning': '#FFFFFF',
+        'light-warning-container': '#FFDBD2',
+        'light-on-warning-container': '#3C0800',
+        'dark-primary': '#ADC8F5',
+        'dark-on-primary': '#133155',
+        'dark-primary-container': '#1E3A5F',
+        'dark-on-primary-container': '#8AA4CF',
+        'dark-secondary': '#BDC7DA',
+        'dark-on-secondary': '#273140',
+        'dark-secondary-container': '#40495A',
+        'dark-on-secondary-container': '#AFB9CC',
+        'dark-tertiary': '#EDBF7F',
+        'dark-on-tertiary': '#452B00',
+        'dark-tertiary-container': '#503300',
+        'dark-on-tertiary-container': '#C69B5F',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000B',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#031427',
+        'dark-on-background': '#D3E4FE',
+        'dark-surface': '#031427',
+        'dark-surface-dim': '#031427',
+        'dark-surface-bright': '#2A3A4F',
+        'dark-surface-container-lowest': '#000F21',
+        'dark-surface-container-low': '#0B1C30',
+        'dark-surface-container': '#102034',
+        'dark-surface-container-high': '#1B2B3F',
+        'dark-surface-container-highest': '#26364A',
+        'dark-on-surface': '#D3E4FE',
+        'dark-surface-variant': '#43474E',
+        'dark-on-surface-variant': '#C4C6CF',
+        'dark-outline': '#8E9199',
+        'dark-outline-variant': '#43474E',
+        'dark-inverse-surface': '#D3E4FE',
+        'dark-inverse-on-surface': '#213145',
+        'dark-inverse-primary': '#455F87',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+        'dark-success': '#6CDBAC',
+        'dark-on-success': '#003826',
+        'dark-success-container': '#005138',
+        'dark-on-success-container': '#89F8C7',
+        'dark-warning': '#FFB4A2',
+        'dark-on-warning': '#611200',
+        'dark-warning-container': '#83260D',
+        'dark-on-warning-container': '#FFDBD2',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Mulish"', 'sans-serif'],
+        'headline': ['"Mulish"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-sm': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-sm-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-sm': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.25px', fontWeight: '500' }],
+        'mono-sm': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '220ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Mulish:wght@600;700&amp;family=Source+Code+Pro:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+
+  <div class="min-h-[1024px] flex bg-light-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Left Sidebar (Navy Blue — exact parity with existing screens) -->
+    <aside id="sidebar" class="hidden lg:flex lg:flex-col lg:w-64 bg-light-primary text-light-on-primary min-h-[1024px] shrink-0 border-r border-light-primary-container" data-stitch-vh="min-h-[1024px]===min-h-screen">
+      <!-- Sidebar Brand Area -->
+      <div class="h-16 px-gutter-lg flex items-center gap-3 border-b border-light-primary-container">
+        <div class="w-9 h-9 rounded bg-light-on-primary flex items-center justify-center text-light-primary shrink-0">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">task_alt</span>
+        </div>
+        <div class="min-w-0">
+          <span class="font-headline text-title-md text-light-on-primary block leading-tight" data-design-text-token="title-md">Daily Task Manager</span>
+        </div>
+      </div>
+
+      <!-- Primary Navigation -->
+      <nav aria-label="Main navigation" class="flex-1 px-gutter-md py-gutter-lg flex flex-col gap-gutter-xs">
+        <a href="../daily_task_manager_dashboard/code.html" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">dashboard</span>
+          <span class="font-label text-label-lg" data-design-text-token="label-lg">Dashboard</span>
+        </a>
+
+        <a href="../daily_task_manager_my_tasks/code.html" class="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">assignment</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">My Tasks</span>
+          </span>
+          <span class="font-label text-label-sm tabular-nums opacity-90" data-design-text-token="label-sm">25</span>
+        </a>
+
+        <a href="../daily_task_manager_completed_tasks/code.html" aria-current="page" class="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded bg-light-primary-container text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">check_circle</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Completed Tasks</span>
+          </span>
+          <span class="font-label text-label-sm tabular-nums opacity-90" data-design-text-token="label-sm">12</span>
+        </a>
+
+        <a href="../daily_task_manager_pending_tasks/code.html" class="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">pending_actions</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Pending Tasks</span>
+          </span>
+          <span class="font-label text-label-sm tabular-nums opacity-90" data-design-text-token="label-sm">8</span>
+        </a>
+
+        <div class="my-gutter-sm border-t border-light-primary-container"></div>
+
+        <a href="../daily_task_manager_application_settings/code.html" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">settings</span>
+          <span class="font-label text-label-lg" data-design-text-token="label-lg">Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="p-gutter-md border-t border-light-primary-container">
+        <div class="rounded-md bg-light-primary-container/70 p-gutter-md flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-md text-light-on-primary" data-design-text-token="label-md">Daily Progress</span>
+          <div class="flex items-center justify-between">
+            <span class="font-body text-body-sm text-light-on-primary-container" data-design-text-token="body-sm">12 of 25 done</span>
+            <span class="font-label text-label-sm text-light-on-primary tabular-nums" data-design-text-token="label-sm">48%</span>
+          </div>
+          <div class="w-full h-1.5 rounded-full bg-light-primary overflow-hidden mt-1">
+            <div class="h-full bg-light-on-primary rounded-full" style="width: 48%;"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Column (Top Header + Completed Tasks Workspace) -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- Sticky Top Header (exact parity with existing screens) -->
+      <header class="sticky top-0 z-20 h-16 bg-light-surface-container-lowest border-b border-light-outline-variant/60 px-gutter-lg flex items-center justify-between gap-gutter-lg">
+        <!-- Left: Mobile menu + Daily Task Manager Logo/Name -->
+        <div class="flex items-center gap-gutter-md min-w-0">
+          <button type="button" aria-label="Toggle navigation" class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded text-light-on-surface hover:bg-light-surface-container-low">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">menu</span>
+          </button>
+          <div class="flex items-center gap-2.5">
+            <div class="lg:hidden w-8 h-8 rounded bg-light-primary flex items-center justify-center text-light-on-primary shrink-0">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">task_alt</span>
+            </div>
+            <h1 class="font-headline text-headline-sm text-light-primary tracking-tight" data-design-text-token="headline-sm">Daily Task Manager</h1>
+          </div>
+        </div>
+
+        <!-- Center: Search Bar -->
+        <div class="hidden sm:block flex-1 max-w-md">
+          <!-- COMPONENT: searchbar-standard -->
+          <form data-component-id="searchbar-standard" data-component-type="searchbar" data-component-variant="standard" role="search" onsubmit="event.preventDefault();" class="relative flex items-center w-full">
+            <span class="material-symbols-outlined text-[18px] text-light-on-surface-variant absolute left-3 pointer-events-none" aria-hidden="true">search</span>
+            <input id="headerSearchInput" type="search" aria-label="Search tasks" placeholder="Search tasks, dates, or priorities..." class="w-full pl-10 pr-4 py-2 rounded bg-light-surface-container-low border border-light-outline-variant/80 text-light-on-surface placeholder:text-light-on-surface-variant font-body text-body-md focus:outline-none focus:bg-light-surface-container-lowest focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+          </form>
+        </div>
+
+        <!-- Right: Notification Icon & User Profile -->
+        <div class="flex items-center gap-gutter-md shrink-0">
+          <div class="relative">
+            <button type="button" aria-label="Notifications (3 unread)" class="relative inline-flex items-center justify-center w-9 h-9 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-primary transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">notifications</span>
+              <!-- COMPONENT: badge-dot -->
+              <span data-component-id="badge-dot" data-component-type="badge" data-component-variant="dot" role="status" aria-label="Unread notifications" class="absolute top-1.5 right-1.5 inline-block w-2 h-2 rounded-full bg-light-error ring-2 ring-light-surface-container-lowest"></span>
+            </button>
+          </div>
+
+          <div class="h-6 w-px bg-light-outline-variant/70"></div>
+
+          <div class="flex items-center gap-2.5">
+            <img src="../girly.jpg" alt="Alex Morgan" class="w-9 h-9 rounded-full object-cover border border-light-outline-variant/70 shrink-0">
+            <div class="hidden md:flex flex-col">
+              <span class="font-title text-title-sm text-light-on-surface leading-tight" data-design-text-token="title-sm">Alex Morgan</span>
+              <span class="font-body text-body-sm text-light-on-surface-variant leading-tight" data-design-text-token="body-sm">Operations Lead</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-gutter-lg flex flex-col gap-gutter-lg max-w-[1440px] w-full mx-auto">
+
+        <!-- Page Title Row -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-gutter-md">
+          <div>
+            <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Completed Tasks</h2>
+            <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Review finished deliverables, completion timestamps, and sign-off records across your team.</p>
+          </div>
+        </div>
+
+        <!-- Summary Cards (3 KPIs: Total Completed Tasks, Completed This Week, Completed This Month) -->
+        <section aria-label="Completed tasks summary" class="grid grid-cols-1 sm:grid-cols-3 gap-gutter-lg items-stretch">
+          <!-- Total Completed Tasks -->
+          <!-- COMPONENT: card-elevated -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-md h-full">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <h3 class="font-label text-label-md text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-md">Total Completed Tasks</h3>
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-success-container text-light-on-success-container">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">task_alt</span>
+              </span>
+            </header>
+            <div class="flex items-center justify-between gap-gutter-sm">
+              <p class="font-headline text-display-sm text-light-on-surface tabular-nums" data-design-text-token="display-sm">12</p>
+              <span class="font-body text-body-sm text-light-success" data-design-text-token="body-sm">48% of sprint</span>
+            </div>
+          </article>
+
+          <!-- Completed This Week -->
+          <!-- COMPONENT: card-elevated -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-md h-full">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <h3 class="font-label text-label-md text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-md">Completed This Week</h3>
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-surface-container-low text-light-primary">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">date_range</span>
+              </span>
+            </header>
+            <div class="flex items-center justify-between gap-gutter-sm">
+              <p class="font-headline text-display-sm text-light-on-surface tabular-nums" data-design-text-token="display-sm">5</p>
+              <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Nov 17 – Nov 23</span>
+            </div>
+          </article>
+
+          <!-- Completed This Month -->
+          <!-- COMPONENT: card-elevated -->
+          <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col justify-between gap-gutter-md h-full">
+            <header class="flex items-center justify-between gap-gutter-sm">
+              <h3 class="font-label text-label-md text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-md">Completed This Month</h3>
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-secondary-container text-light-on-secondary-container">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">calendar_month</span>
+              </span>
+            </header>
+            <div class="flex items-center justify-between gap-gutter-sm">
+              <p class="font-headline text-display-sm text-light-on-surface tabular-nums" data-design-text-token="display-sm">12</p>
+              <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">November 2026</span>
+            </div>
+          </article>
+        </section>
+
+        <!-- Search, Filters & Completed Tasks Table Card -->
+        <section aria-label="Completed tasks list" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md shadow-sm overflow-hidden">
+
+          <!-- Search & Filter Controls -->
+          <div class="p-gutter-lg border-b border-light-outline-variant/60 bg-light-surface-container-low/40 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-md">
+            <!-- Search by Task Name -->
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="searchCompletedInput" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Search by Task Name</label>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined text-[18px] text-light-on-surface-variant absolute left-3 pointer-events-none" aria-hidden="true">search</span>
+                <input id="searchCompletedInput" type="search" placeholder="Search completed tasks..." class="w-full pl-9 pr-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-on-surface-variant font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+              </div>
+            </div>
+
+            <!-- Filter by Employee -->
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="employeeFilter" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Filter by Employee</label>
+              <select id="employeeFilter" class="w-full px-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+                <option value="all">All Employees</option>
+                <option value="Alex Morgan">Alex Morgan</option>
+                <option value="Priya Nair">Priya Nair</option>
+                <option value="Marcus Vance">Marcus Vance</option>
+                <option value="Elena Rostova">Elena Rostova</option>
+                <option value="David Kim">David Kim</option>
+              </select>
+            </div>
+
+            <!-- Filter by Completion Date -->
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="completionDateFilter" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Filter by Completion Date</label>
+              <select id="completionDateFilter" class="w-full px-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+                <option value="all">All Completion Dates</option>
+                <option value="this-week">This Week (Nov 17 – Nov 23)</option>
+                <option value="last-week">Last Week (Nov 10 – Nov 16)</option>
+                <option value="earlier">Earlier This Month</option>
+              </select>
+            </div>
+
+            <!-- Filter by Priority -->
+            <div class="flex flex-col gap-gutter-xs">
+              <label for="priorityFilter" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Filter by Priority</label>
+              <select id="priorityFilter" class="w-full px-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+                <option value="all">All Priorities</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- COMPONENT: table-standard -->
+          <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-light-surface-container-low border-b border-light-outline-variant/70">
+                  <th scope="col" class="px-4 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Task Name</span>
+                  </th>
+                  <th scope="col" class="px-2.5 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Employee</span>
+                  </th>
+                  <th scope="col" class="px-2.5 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Assigned</span>
+                  </th>
+                  <th scope="col" class="px-2.5 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Due Date</span>
+                  </th>
+                  <th scope="col" class="px-2.5 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Completed</span>
+                  </th>
+                  <th scope="col" class="px-2.5 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Priority</span>
+                  </th>
+                  <th scope="col" class="px-2.5 py-3.5 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Status</span>
+                  </th>
+                  <th scope="col" class="px-4 py-3.5 text-right font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                    <span data-design-text-token="label-sm">Actions</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="completedTasksBody" class="divide-y divide-light-outline-variant/40">
+
+                <!-- Row 1 -->
+                <tr class="task-row hover:bg-light-surface-container-low/60 transition-colors duration-state-change ease-state-change" data-title="monthly payroll reconciliation" data-employee="Priya Nair" data-period="this-week" data-priority="High">
+                  <td class="px-4 py-4 font-title text-title-sm text-light-on-surface">
+                    <span data-design-text-token="title-sm">Monthly Payroll Reconciliation</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Priya Nair</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 14, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 22, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-label text-label-sm text-light-success tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 22, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-light-error-container text-light-on-error-container font-label text-label-sm" data-design-text-token="label-sm">High</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span data-component-id="badge-success" data-component-type="badge" data-component-variant="success" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-success" aria-hidden="true"></span>
+                      <span data-design-text-token="label-sm">Completed</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Monthly Payroll Reconciliation" class="view-details-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="View Completion Information" aria-label="View Completion Information for Monthly Payroll Reconciliation" class="view-completion-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-success hover:bg-light-success-container transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">fact_check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr class="task-row hover:bg-light-surface-container-low/60 transition-colors duration-state-change ease-state-change" data-title="security compliance audit sign-off" data-employee="Marcus Vance" data-period="this-week" data-priority="High">
+                  <td class="px-4 py-4 font-title text-title-sm text-light-on-surface">
+                    <span data-design-text-token="title-sm">Security Compliance Audit Sign-Off</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Marcus Vance</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 10, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 21, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-label text-label-sm text-light-success tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 21, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-light-error-container text-light-on-error-container font-label text-label-sm" data-design-text-token="label-sm">High</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span data-component-id="badge-success" data-component-type="badge" data-component-variant="success" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-success" aria-hidden="true"></span>
+                      <span data-design-text-token="label-sm">Completed</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Security Compliance Audit Sign-Off" class="view-details-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="View Completion Information" aria-label="View Completion Information for Security Compliance Audit Sign-Off" class="view-completion-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-success hover:bg-light-success-container transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">fact_check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr class="task-row hover:bg-light-surface-container-low/60 transition-colors duration-state-change ease-state-change" data-title="sprint 14 retrospective summary" data-employee="Alex Morgan" data-period="this-week" data-priority="Low">
+                  <td class="px-4 py-4 font-title text-title-sm text-light-on-surface">
+                    <span data-design-text-token="title-sm">Sprint 14 Retrospective Summary</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Alex Morgan</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 15, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 20, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-label text-label-sm text-light-success tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 19, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-light-surface-variant text-light-on-surface-variant font-label text-label-sm" data-design-text-token="label-sm">Low</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span data-component-id="badge-success" data-component-type="badge" data-component-variant="success" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-success" aria-hidden="true"></span>
+                      <span data-design-text-token="label-sm">Completed</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Sprint 14 Retrospective Summary" class="view-details-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="View Completion Information" aria-label="View Completion Information for Sprint 14 Retrospective Summary" class="view-completion-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-success hover:bg-light-success-container transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">fact_check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr class="task-row hover:bg-light-surface-container-low/60 transition-colors duration-state-change ease-state-change" data-title="enterprise sla renewal brief" data-employee="Elena Rostova" data-period="this-week" data-priority="Medium">
+                  <td class="px-4 py-4 font-title text-title-sm text-light-on-surface">
+                    <span data-design-text-token="title-sm">Enterprise SLA Renewal Brief</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Elena Rostova</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 12, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 18, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-label text-label-sm text-light-success tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 18, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-light-warning-container text-light-on-warning-container font-label text-label-sm" data-design-text-token="label-sm">Medium</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span data-component-id="badge-success" data-component-type="badge" data-component-variant="success" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-success" aria-hidden="true"></span>
+                      <span data-design-text-token="label-sm">Completed</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Enterprise SLA Renewal Brief" class="view-details-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="View Completion Information" aria-label="View Completion Information for Enterprise SLA Renewal Brief" class="view-completion-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-success hover:bg-light-success-container transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">fact_check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr class="task-row hover:bg-light-surface-container-low/60 transition-colors duration-state-change ease-state-change" data-title="q4 cloud infrastructure cost audit" data-employee="David Kim" data-period="last-week" data-priority="Medium">
+                  <td class="px-4 py-4 font-title text-title-sm text-light-on-surface">
+                    <span data-design-text-token="title-sm">Q4 Cloud Infrastructure Cost Audit</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">David Kim</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 06, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 15, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-label text-label-sm text-light-success tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 14, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-light-warning-container text-light-on-warning-container font-label text-label-sm" data-design-text-token="label-sm">Medium</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span data-component-id="badge-success" data-component-type="badge" data-component-variant="success" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-success" aria-hidden="true"></span>
+                      <span data-design-text-token="label-sm">Completed</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Q4 Cloud Infrastructure Cost Audit" class="view-details-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="View Completion Information" aria-label="View Completion Information for Q4 Cloud Infrastructure Cost Audit" class="view-completion-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-success hover:bg-light-success-container transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">fact_check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 6 -->
+                <tr class="task-row hover:bg-light-surface-container-low/60 transition-colors duration-state-change ease-state-change" data-title="customer feedback taxonomy update" data-employee="Elena Rostova" data-period="earlier" data-priority="Low">
+                  <td class="px-4 py-4 font-title text-title-sm text-light-on-surface">
+                    <span data-design-text-token="title-sm">Customer Feedback Taxonomy</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface">
+                    <span data-design-text-token="body-sm">Elena Rostova</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 02, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-body text-body-sm text-light-on-surface-variant tabular-nums">
+                    <span data-design-text-token="body-sm">Nov 09, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4 font-label text-label-sm text-light-success tabular-nums">
+                    <span data-design-text-token="label-sm">Nov 08, 2026</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-light-surface-variant text-light-on-surface-variant font-label text-label-sm" data-design-text-token="label-sm">Low</span>
+                  </td>
+                  <td class="px-2.5 py-4">
+                    <span data-component-id="badge-success" data-component-type="badge" data-component-variant="success" role="status" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">
+                      <span class="w-1.5 h-1.5 rounded-full bg-light-success" aria-hidden="true"></span>
+                      <span data-design-text-token="label-sm">Completed</span>
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="inline-flex items-center justify-end gap-1">
+                      <button type="button" title="View Task Details" aria-label="View Task Details for Customer Feedback Taxonomy Update" class="view-details-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">visibility</span>
+                      </button>
+                      <button type="button" title="View Completion Information" aria-label="View Completion Information for Customer Feedback Taxonomy Update" class="view-completion-btn inline-flex items-center justify-center w-8 h-8 rounded text-light-success hover:bg-light-success-container transition-colors duration-state-change ease-state-change">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">fact_check</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Footer -->
+          <div class="px-gutter-lg py-3.5 bg-light-surface-container-low/50 border-t border-light-outline-variant/60 flex items-center justify-between gap-gutter-md">
+            <span id="completedCountSummary" class="font-body text-body-sm text-light-on-surface-variant tabular-nums" data-design-text-token="body-sm">Showing 6 of 12 completed tasks</span>
+            <div class="flex items-center gap-gutter-xs" role="navigation" aria-label="Pagination">
+              <button type="button" class="px-3 py-1 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface-variant font-label text-label-sm hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change">Previous</button>
+              <button type="button" aria-current="page" class="px-3 py-1 rounded border border-light-primary bg-light-primary text-light-on-primary font-label text-label-sm tabular-nums">1</button>
+              <button type="button" class="px-3 py-1 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface-variant font-label text-label-sm hover:bg-light-surface-container-low tabular-nums transition-colors duration-state-change ease-state-change">2</button>
+              <button type="button" class="px-3 py-1 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface-variant font-label text-label-sm hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change">Next</button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Completion Information Modal -->
+  <div id="infoModal" class="hidden fixed inset-0 z-40 bg-light-scrim/40 flex items-center justify-center p-gutter-md" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+    <div class="bg-light-surface-container-lowest border border-light-outline-variant rounded-md shadow-xl w-full max-w-md overflow-hidden">
+      <div class="px-gutter-lg py-gutter-md border-b border-light-outline-variant/60 flex items-center justify-between">
+        <h3 id="infoModalTitle" class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Completion Information</h3>
+        <button type="button" id="closeInfoModal" aria-label="Close modal" class="inline-flex items-center justify-center w-8 h-8 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="p-gutter-lg flex flex-col gap-gutter-md">
+        <div>
+          <span class="font-label text-label-sm text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-sm">Task</span>
+          <p id="modalTaskName" class="font-title text-title-md text-light-on-surface mt-0.5" data-design-text-token="title-md"></p>
+        </div>
+        <div class="grid grid-cols-2 gap-gutter-md">
+          <div>
+            <span class="font-label text-label-sm text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-sm">Completed By</span>
+            <p id="modalEmployee" class="font-body text-body-md text-light-on-surface mt-0.5" data-design-text-token="body-md"></p>
+          </div>
+          <div>
+            <span class="font-label text-label-sm text-light-on-surface-variant uppercase tracking-wide" data-design-text-token="label-sm">Completed Date</span>
+            <p id="modalCompletedDate" class="font-label text-label-md text-light-success mt-0.5 tabular-nums" data-design-text-token="label-md"></p>
+          </div>
+        </div>
+        <div class="p-gutter-md rounded bg-light-success-container/40 border border-light-success/20">
+          <span class="font-label text-label-sm text-light-on-success-container block mb-1" data-design-text-token="label-sm">Verification Note</span>
+          <p class="font-body text-body-sm text-light-on-success-container" data-design-text-token="body-sm">Deliverable reviewed and signed off with all acceptance criteria met.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const searchInput = document.getElementById('searchCompletedInput');
+      const headerSearchInput = document.getElementById('headerSearchInput');
+      const employeeFilter = document.getElementById('employeeFilter');
+      const completionDateFilter = document.getElementById('completionDateFilter');
+      const priorityFilter = document.getElementById('priorityFilter');
+      const tableBody = document.getElementById('completedTasksBody');
+      const countSummary = document.getElementById('completedCountSummary');
+      const infoModal = document.getElementById('infoModal');
+      const closeInfoModal = document.getElementById('closeInfoModal');
+
+      function applyFilters() {
+        const query = (searchInput.value || headerSearchInput.value || '').trim().toLowerCase();
+        const emp = employeeFilter.value;
+        const period = completionDateFilter.value;
+        const prio = priorityFilter.value;
+        const rows = tableBody.querySelectorAll('.task-row');
+        let visible = 0;
+
+        rows.forEach((row) => {
+          const matchTitle = !query || (row.getAttribute('data-title') || '').includes(query);
+          const matchEmp = emp === 'all' || row.getAttribute('data-employee') === emp;
+          const matchPeriod = period === 'all' || row.getAttribute('data-period') === period;
+          const matchPrio = prio === 'all' || row.getAttribute('data-priority') === prio;
+
+          if (matchTitle && matchEmp && matchPeriod && matchPrio) {
+            row.classList.remove('hidden');
+            visible++;
+          } else {
+            row.classList.add('hidden');
+          }
+        });
+
+        countSummary.textContent = 'Showing ' + visible + ' of 12 completed tasks';
+      }
+
+      [searchInput, headerSearchInput].forEach((el) => {
+        if (el) el.addEventListener('input', applyFilters);
+      });
+      [employeeFilter, completionDateFilter, priorityFilter].forEach((el) => {
+        if (el) el.addEventListener('change', applyFilters);
+      });
+
+      tableBody.addEventListener('click', (e) => {
+        const btn = e.target.closest('.view-completion-btn, .view-details-btn');
+        if (!btn) return;
+        const row = btn.closest('.task-row');
+        document.getElementById('modalTaskName').textContent = row.querySelector('td:nth-child(1) span').textContent;
+        document.getElementById('modalEmployee').textContent = row.getAttribute('data-employee');
+        document.getElementById('modalCompletedDate').textContent = row.querySelector('td:nth-child(5) span').textContent;
+        document.getElementById('infoModalTitle').textContent = btn.classList.contains('view-completion-btn') ? 'Completion Information' : 'Task Details';
+        infoModal.classList.remove('hidden');
+      });
+
+      closeInfoModal.addEventListener('click', () => infoModal.classList.add('hidden'));
+    })();
+  </script>
+
+
+</body></html>

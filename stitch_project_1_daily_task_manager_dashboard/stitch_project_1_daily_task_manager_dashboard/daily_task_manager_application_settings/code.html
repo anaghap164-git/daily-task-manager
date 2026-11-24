@@ -1,0 +1,604 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Task Manager — Application Settings</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'light-primary': '#022448',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1E3A5F',
+        'light-on-primary-container': '#8AA4CF',
+        'light-secondary': '#555F70',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#D6E0F4',
+        'light-on-secondary-container': '#5A6374',
+        'light-tertiary': '#341F00',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#503300',
+        'light-on-tertiary-container': '#C69B5F',
+        'light-error': '#B91C1C',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000B',
+        'light-background': '#F8F9FF',
+        'light-on-background': '#0B1C30',
+        'light-surface': '#F8F9FF',
+        'light-surface-dim': '#CBDBF5',
+        'light-surface-bright': '#F8F9FF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#EFF4FF',
+        'light-surface-container': '#E5EEFF',
+        'light-surface-container-high': '#DCE9FF',
+        'light-surface-container-highest': '#D3E4FE',
+        'light-on-surface': '#0B1C30',
+        'light-surface-variant': '#E0E2EB',
+        'light-on-surface-variant': '#43474E',
+        'light-outline': '#74777F',
+        'light-outline-variant': '#C4C6CF',
+        'light-inverse-surface': '#213145',
+        'light-inverse-on-surface': '#EAF1FF',
+        'light-inverse-primary': '#ADC8F5',
+        'light-shadow': '#000000',
+        'light-scrim': '#000000',
+        'light-success': '#006C4C',
+        'light-on-success': '#FFFFFF',
+        'light-success-container': '#89F8C7',
+        'light-on-success-container': '#002114',
+        'light-warning': '#A33D22',
+        'light-on-warning': '#FFFFFF',
+        'light-warning-container': '#FFDBD2',
+        'light-on-warning-container': '#3C0800',
+        'dark-primary': '#ADC8F5',
+        'dark-on-primary': '#133155',
+        'dark-primary-container': '#1E3A5F',
+        'dark-on-primary-container': '#8AA4CF',
+        'dark-secondary': '#BDC7DA',
+        'dark-on-secondary': '#273140',
+        'dark-secondary-container': '#40495A',
+        'dark-on-secondary-container': '#AFB9CC',
+        'dark-tertiary': '#EDBF7F',
+        'dark-on-tertiary': '#452B00',
+        'dark-tertiary-container': '#503300',
+        'dark-on-tertiary-container': '#C69B5F',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000B',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#031427',
+        'dark-on-background': '#D3E4FE',
+        'dark-surface': '#031427',
+        'dark-surface-dim': '#031427',
+        'dark-surface-bright': '#2A3A4F',
+        'dark-surface-container-lowest': '#000F21',
+        'dark-surface-container-low': '#0B1C30',
+        'dark-surface-container': '#102034',
+        'dark-surface-container-high': '#1B2B3F',
+        'dark-surface-container-highest': '#26364A',
+        'dark-on-surface': '#D3E4FE',
+        'dark-surface-variant': '#43474E',
+        'dark-on-surface-variant': '#C4C6CF',
+        'dark-outline': '#8E9199',
+        'dark-outline-variant': '#43474E',
+        'dark-inverse-surface': '#D3E4FE',
+        'dark-inverse-on-surface': '#213145',
+        'dark-inverse-primary': '#455F87',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+        'dark-success': '#6CDBAC',
+        'dark-on-success': '#003826',
+        'dark-success-container': '#005138',
+        'dark-on-success-container': '#89F8C7',
+        'dark-warning': '#FFB4A2',
+        'dark-on-warning': '#611200',
+        'dark-warning-container': '#83260D',
+        'dark-on-warning-container': '#FFDBD2',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Mulish"', 'sans-serif'],
+        'headline': ['"Mulish"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-sm': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-sm-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-sm': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.25px', fontWeight: '500' }],
+        'mono-sm': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '220ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Mulish:wght@600;700&amp;family=Source+Code+Pro:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+
+  <div class="min-h-[1024px] flex bg-light-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Left Sidebar (Navy Blue — exact parity with existing screens) -->
+    <aside id="sidebar" class="hidden lg:flex lg:flex-col lg:w-64 bg-light-primary text-light-on-primary min-h-[1024px] shrink-0 border-r border-light-primary-container" data-stitch-vh="min-h-[1024px]===min-h-screen">
+      <!-- Sidebar Brand Area -->
+      <div class="h-16 px-gutter-lg flex items-center gap-3 border-b border-light-primary-container">
+        <div class="w-9 h-9 rounded bg-light-on-primary flex items-center justify-center text-light-primary shrink-0">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">task_alt</span>
+        </div>
+        <div class="min-w-0">
+          <span class="font-headline text-title-md text-light-on-primary block leading-tight" data-design-text-token="title-md">Daily Task Manager</span>
+        </div>
+      </div>
+
+      <!-- Primary Navigation -->
+      <nav aria-label="Main navigation" class="flex-1 px-gutter-md py-gutter-lg flex flex-col gap-gutter-xs">
+        <a href="../daily_task_manager_dashboard/code.html" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">dashboard</span>
+          <span class="font-label text-label-lg" data-design-text-token="label-lg">Dashboard</span>
+        </a>
+
+        <a href="../daily_task_manager_my_tasks/code.html" class="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">assignment</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">My Tasks</span>
+          </span>
+          <span class="font-label text-label-sm tabular-nums opacity-90" data-design-text-token="label-sm">25</span>
+        </a>
+
+        <a href="../daily_task_manager_completed_tasks/code.html" class="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">check_circle</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Completed Tasks</span>
+          </span>
+          <span class="font-label text-label-sm tabular-nums opacity-90" data-design-text-token="label-sm">12</span>
+        </a>
+
+        <a href="../daily_task_manager_pending_tasks/code.html" class="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded text-light-on-primary-container hover:bg-light-primary-container/60 hover:text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">pending_actions</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Pending Tasks</span>
+          </span>
+          <span class="font-label text-label-sm tabular-nums opacity-90" data-design-text-token="label-sm">8</span>
+        </a>
+
+        <div class="my-gutter-sm border-t border-light-primary-container"></div>
+
+        <a href="../daily_task_manager_application_settings/code.html" aria-current="page" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded bg-light-primary-container text-light-on-primary transition-colors duration-state-change ease-state-change text-left">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">settings</span>
+          <span class="font-label text-label-lg" data-design-text-token="label-lg">Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="p-gutter-md border-t border-light-primary-container">
+        <div class="rounded-md bg-light-primary-container/70 p-gutter-md flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-md text-light-on-primary" data-design-text-token="label-md">Daily Progress</span>
+          <div class="flex items-center justify-between">
+            <span class="font-body text-body-sm text-light-on-primary-container" data-design-text-token="body-sm">12 of 25 done</span>
+            <span class="font-label text-label-sm text-light-on-primary tabular-nums" data-design-text-token="label-sm">48%</span>
+          </div>
+          <div class="w-full h-1.5 rounded-full bg-light-primary overflow-hidden mt-1">
+            <div class="h-full bg-light-on-primary rounded-full" style="width: 48%;"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Column (Top Header + Settings Workspace) -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- Sticky Top Header (exact parity with existing screens) -->
+      <header class="sticky top-0 z-20 h-16 bg-light-surface-container-lowest border-b border-light-outline-variant/60 px-gutter-lg flex items-center justify-between gap-gutter-lg">
+        <!-- Left: Mobile menu + Daily Task Manager Logo/Name -->
+        <div class="flex items-center gap-gutter-md min-w-0">
+          <button type="button" aria-label="Toggle navigation" class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded text-light-on-surface hover:bg-light-surface-container-low">
+            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">menu</span>
+          </button>
+          <div class="flex items-center gap-2.5">
+            <div class="lg:hidden w-8 h-8 rounded bg-light-primary flex items-center justify-center text-light-on-primary shrink-0">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">task_alt</span>
+            </div>
+            <h1 class="font-headline text-headline-sm text-light-primary tracking-tight" data-design-text-token="headline-sm">Daily Task Manager</h1>
+          </div>
+        </div>
+
+        <!-- Center: Search Bar -->
+        <div class="hidden sm:block flex-1 max-w-md">
+          <!-- COMPONENT: searchbar-standard -->
+          <form data-component-id="searchbar-standard" data-component-type="searchbar" data-component-variant="standard" role="search" onsubmit="event.preventDefault();" class="relative flex items-center w-full">
+            <span class="material-symbols-outlined text-[18px] text-light-on-surface-variant absolute left-3 pointer-events-none" aria-hidden="true">search</span>
+            <input type="search" aria-label="Search settings or tasks" placeholder="Search tasks, dates, or priorities..." class="w-full pl-10 pr-4 py-2 rounded bg-light-surface-container-low border border-light-outline-variant/80 text-light-on-surface placeholder:text-light-on-surface-variant font-body text-body-md focus:outline-none focus:bg-light-surface-container-lowest focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 transition-colors duration-state-change ease-state-change">
+          </form>
+        </div>
+
+        <!-- Right: Notification Icon & User Profile -->
+        <div class="flex items-center gap-gutter-md shrink-0">
+          <div class="relative">
+            <button type="button" aria-label="Notifications (3 unread)" class="relative inline-flex items-center justify-center w-9 h-9 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-primary transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">notifications</span>
+              <!-- COMPONENT: badge-dot -->
+              <span data-component-id="badge-dot" data-component-type="badge" data-component-variant="dot" role="status" aria-label="Unread notifications" class="absolute top-1.5 right-1.5 inline-block w-2 h-2 rounded-full bg-light-error ring-2 ring-light-surface-container-lowest"></span>
+            </button>
+          </div>
+
+          <div class="h-6 w-px bg-light-outline-variant/70"></div>
+
+          <div class="flex items-center gap-2.5">
+            <img src="../girly.jpg" alt="Alex Morgan" class="w-9 h-9 rounded-full object-cover border border-light-outline-variant/70 shrink-0">
+            <div class="hidden md:flex flex-col">
+              <span class="font-title text-title-sm text-light-on-surface leading-tight" data-design-text-token="title-sm">Alex Morgan</span>
+              <span class="font-body text-body-sm text-light-on-surface-variant leading-tight" data-design-text-token="body-sm">Operations Lead</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Settings Content -->
+      <main class="flex-1 p-gutter-lg flex flex-col gap-gutter-lg max-w-[1040px] w-full mx-auto">
+
+        <!-- Page Title Row -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-gutter-md">
+          <div>
+            <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Application Settings</h2>
+            <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Manage your profile, notification alerts, default task preferences, appearance, and account security.</p>
+          </div>
+        </div>
+
+        <!-- Save Confirmation Banner (hidden by default) -->
+        <div id="saveBanner" role="status" class="hidden px-gutter-md py-3 rounded bg-light-success-container border border-light-success/30 flex items-center gap-3 text-light-on-success-container">
+          <span class="material-symbols-outlined text-[20px] text-light-success shrink-0" aria-hidden="true">check_circle</span>
+          <p class="font-body text-body-sm" data-design-text-token="body-sm">Your application settings have been saved.</p>
+        </div>
+
+        <form id="settingsForm" class="flex flex-col gap-gutter-lg">
+
+          <!-- 1. Profile Settings Card -->
+          <!-- COMPONENT: card-elevated -->
+          <section aria-label="Profile Settings" data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col gap-gutter-lg">
+            <header class="flex items-center justify-between gap-gutter-md pb-gutter-md border-b border-light-outline-variant/60">
+              <div class="flex items-center gap-3">
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-surface-container-low text-light-primary">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">person</span>
+                </span>
+                <div>
+                  <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Profile Settings</h3>
+                  <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Personal details and workspace role information.</p>
+                </div>
+              </div>
+              <!-- COMPONENT: button-secondary -->
+              <button type="button" id="editProfileBtn" data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" class="inline-flex items-center justify-center gap-gutter-sm px-gutter-md py-2.5 rounded bg-light-surface-container-lowest text-light-primary border border-light-outline-variant hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change shrink-0">
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit</span>
+                <span class="font-label text-label-lg" data-design-text-token="label-lg">Edit Profile</span>
+              </button>
+            </header>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-gutter-lg">
+              <!-- Profile Picture -->
+              <div class="flex items-center gap-gutter-md shrink-0">
+                <img src="../girly.jpg" alt="Alex Morgan" class="w-16 h-16 rounded-full object-cover border-2 border-light-outline-variant/70">
+              </div>
+
+              <!-- Profile Fields Grid -->
+              <div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-gutter-md w-full">
+                <div class="flex flex-col gap-gutter-xs">
+                  <label for="employeeName" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Employee Name</label>
+                  <input id="employeeName" type="text" value="Alex Morgan" class="w-full px-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-low/50 text-light-on-surface font-body text-body-md focus:outline-none focus:bg-light-surface-container-lowest focus:border-light-primary focus:ring-2 focus:ring-light-primary/20">
+                </div>
+                <div class="flex flex-col gap-gutter-xs">
+                  <label for="emailAddress" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Email Address</label>
+                  <input id="emailAddress" type="email" value="alex.morgan@company.com" class="w-full px-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-low/50 text-light-on-surface font-body text-body-md focus:outline-none focus:bg-light-surface-container-lowest focus:border-light-primary focus:ring-2 focus:ring-light-primary/20">
+                </div>
+                <div class="flex flex-col gap-gutter-xs">
+                  <label for="jobRole" class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Job Role</label>
+                  <input id="jobRole" type="text" value="Operations Lead" class="w-full px-3 py-2 rounded border border-light-outline-variant bg-light-surface-container-low/50 text-light-on-surface font-body text-body-md focus:outline-none focus:bg-light-surface-container-lowest focus:border-light-primary focus:ring-2 focus:ring-light-primary/20">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. Notification Settings Card -->
+          <!-- COMPONENT: card-elevated -->
+          <section aria-label="Notification Settings" data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+            <header class="flex items-center gap-3 pb-gutter-md border-b border-light-outline-variant/60">
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-surface-container-low text-light-primary">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">notifications_active</span>
+              </span>
+              <div>
+                <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Notification Settings</h3>
+                <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Control when and how you receive task alerts.</p>
+              </div>
+            </header>
+
+            <div class="divide-y divide-light-outline-variant/40">
+              <!-- Toggle 1 -->
+              <div class="py-3.5 flex items-center justify-between gap-gutter-md">
+                <div>
+                  <label for="toggleAssignment" class="font-title text-title-sm text-light-on-surface block" data-design-text-token="title-sm">Task Assignment Notifications</label>
+                  <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Notify me immediately when a new task is assigned to me.</span>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer shrink-0">
+                  <input id="toggleAssignment" type="checkbox" checked class="sr-only peer">
+                  <span class="w-11 h-6 bg-light-surface-variant rounded-full peer peer-checked:bg-light-primary transition-colors duration-state-change ease-state-change after:content-[&#39;&#39;] after:absolute after:top-0.5 after:left-0.5 after:bg-light-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-transform after:duration-state-change peer-checked:after:translate-x-5"></span>
+                </label>
+              </div>
+
+              <!-- Toggle 2 -->
+              <div class="py-3.5 flex items-center justify-between gap-gutter-md">
+                <div>
+                  <label for="toggleDueDate" class="font-title text-title-sm text-light-on-surface block" data-design-text-token="title-sm">Due Date Reminders</label>
+                  <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Send a morning digest for tasks due within the next 24 hours.</span>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer shrink-0">
+                  <input id="toggleDueDate" type="checkbox" checked class="sr-only peer">
+                  <span class="w-11 h-6 bg-light-surface-variant rounded-full peer peer-checked:bg-light-primary transition-colors duration-state-change ease-state-change after:content-[&#39;&#39;] after:absolute after:top-0.5 after:left-0.5 after:bg-light-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-transform after:duration-state-change peer-checked:after:translate-x-5"></span>
+                </label>
+              </div>
+
+              <!-- Toggle 3 -->
+              <div class="py-3.5 flex items-center justify-between gap-gutter-md">
+                <div>
+                  <label for="toggleOverdue" class="font-title text-title-sm text-light-on-surface block" data-design-text-token="title-sm">Overdue Task Alerts</label>
+                  <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Highlight and alert when any assigned task passes its due date.</span>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer shrink-0">
+                  <input id="toggleOverdue" type="checkbox" checked class="sr-only peer">
+                  <span class="w-11 h-6 bg-light-surface-variant rounded-full peer peer-checked:bg-light-primary transition-colors duration-state-change ease-state-change after:content-[&#39;&#39;] after:absolute after:top-0.5 after:left-0.5 after:bg-light-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-transform after:duration-state-change peer-checked:after:translate-x-5"></span>
+                </label>
+              </div>
+
+              <!-- Toggle 4 -->
+              <div class="py-3.5 flex items-center justify-between gap-gutter-md">
+                <div>
+                  <label for="toggleCompletion" class="font-title text-title-sm text-light-on-surface block" data-design-text-token="title-sm">Task Completion Notifications</label>
+                  <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Receive updates when team members mark shared tasks as completed.</span>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer shrink-0">
+                  <input id="toggleCompletion" type="checkbox" class="sr-only peer">
+                  <span class="w-11 h-6 bg-light-surface-variant rounded-full peer peer-checked:bg-light-primary transition-colors duration-state-change ease-state-change after:content-[&#39;&#39;] after:absolute after:top-0.5 after:left-0.5 after:bg-light-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-transform after:duration-state-change peer-checked:after:translate-x-5"></span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. Task Preferences Card -->
+          <!-- COMPONENT: card-elevated -->
+          <section aria-label="Task Preferences" data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col gap-gutter-lg">
+            <header class="flex items-center gap-3 pb-gutter-md border-b border-light-outline-variant/60">
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-surface-container-low text-light-primary">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">tune</span>
+              </span>
+              <div>
+                <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Task Preferences</h3>
+                <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Configure default values for new tasks and workspace formatting.</p>
+              </div>
+            </header>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter-lg">
+              <div class="flex flex-col gap-gutter-xs">
+                <label for="defaultPriority" class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Default Task Priority</label>
+                <select id="defaultPriority" class="w-full px-3.5 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20">
+                  <option value="High">High</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+
+              <div class="flex flex-col gap-gutter-xs">
+                <label for="defaultStatus" class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Default Task Status</label>
+                <select id="defaultStatus" class="w-full px-3.5 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20">
+                  <option value="Pending" selected>Pending</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+
+              <div class="flex flex-col gap-gutter-xs">
+                <label for="defaultView" class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Default Task View</label>
+                <select id="defaultView" class="w-full px-3.5 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20">
+                  <option value="table" selected>Table View</option>
+                  <option value="compact">Compact List</option>
+                  <option value="board">Kanban Board</option>
+                </select>
+              </div>
+
+              <div class="flex flex-col gap-gutter-xs">
+                <label for="dateFormat" class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Date Format</label>
+                <select id="dateFormat" class="w-full px-3.5 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-md focus:outline-none focus:border-light-primary focus:ring-2 focus:ring-light-primary/20">
+                  <option value="MMM DD, YYYY" selected>MMM DD, YYYY (Nov 23, 2026)</option>
+                  <option value="DD/MM/YYYY">DD/MM/YYYY (23/11/2026)</option>
+                  <option value="YYYY-MM-DD">YYYY-MM-DD (2026-11-23)</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. Appearance & 5. Security (2-column grid of cards) -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-lg items-stretch">
+
+            <!-- 4. Appearance Card -->
+            <!-- COMPONENT: card-elevated -->
+            <section aria-label="Appearance" data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col gap-gutter-lg h-full">
+              <header class="flex items-center gap-3 pb-gutter-md border-b border-light-outline-variant/60">
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-surface-container-low text-light-primary">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">palette</span>
+                </span>
+                <div>
+                  <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Appearance</h3>
+                  <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Select your preferred interface theme.</p>
+                </div>
+              </header>
+
+              <div class="grid grid-cols-2 gap-gutter-md flex-1" role="radiogroup" aria-label="Theme mode">
+                <label class="cursor-pointer">
+                  <input type="radio" name="appearance" value="light" checked class="peer sr-only">
+                  <div class="h-full p-gutter-md rounded-md border-2 border-light-outline-variant peer-checked:border-light-primary peer-checked:bg-light-surface-container-low/50 flex flex-col gap-2 transition-colors duration-state-change ease-state-change">
+                    <div class="flex items-center justify-between">
+                      <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">light_mode</span>
+                      <span class="w-2.5 h-2.5 rounded-full bg-light-primary"></span>
+                    </div>
+                    <span class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">Light Mode</span>
+                    <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Navy &amp; white default</span>
+                  </div>
+                </label>
+
+                <label class="cursor-pointer">
+                  <input type="radio" name="appearance" value="dark" class="peer sr-only">
+                  <div class="h-full p-gutter-md rounded-md border-2 border-light-outline-variant peer-checked:border-light-primary peer-checked:bg-light-surface-container-low/50 flex flex-col gap-2 transition-colors duration-state-change ease-state-change">
+                    <div class="flex items-center justify-between">
+                      <span class="material-symbols-outlined text-[20px] text-light-on-surface-variant" aria-hidden="true">dark_mode</span>
+                    </div>
+                    <span class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">Dark Mode</span>
+                    <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Deep navy low-glare</span>
+                  </div>
+                </label>
+              </div>
+            </section>
+
+            <!-- 5. Security Card -->
+            <!-- COMPONENT: card-elevated -->
+            <section aria-label="Security" data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface-container-lowest border border-light-outline-variant/60 rounded-md p-gutter-lg shadow-sm flex flex-col gap-gutter-md h-full">
+              <header class="flex items-center gap-3 pb-gutter-md border-b border-light-outline-variant/60">
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded bg-light-surface-container-low text-light-primary">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">shield</span>
+                </span>
+                <div>
+                  <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Security</h3>
+                  <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Protect your account credentials and sign-in.</p>
+                </div>
+              </header>
+
+              <div class="divide-y divide-light-outline-variant/40 flex-1 flex flex-col justify-center">
+                <!-- Change Password -->
+                <div class="py-3 flex items-center justify-between gap-gutter-md">
+                  <div>
+                    <span class="font-title text-title-sm text-light-on-surface block" data-design-text-token="title-sm">Password</span>
+                    <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Last updated 42 days ago</span>
+                  </div>
+                  <button type="button" class="px-3.5 py-2 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-primary font-label text-label-md hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change shrink-0">
+                    Change Password
+                  </button>
+                </div>
+
+                <!-- Two-Factor Authentication -->
+                <div class="py-3 flex items-center justify-between gap-gutter-md">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <label for="toggle2FA" class="font-title text-title-sm text-light-on-surface" data-design-text-token="title-sm">Two-Factor Authentication</label>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm" data-design-text-token="label-sm">Enabled</span>
+                    </div>
+                    <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Require an authenticator code at sign-in.</span>
+                  </div>
+                  <label class="relative inline-flex items-center cursor-pointer shrink-0">
+                    <input id="toggle2FA" type="checkbox" checked class="sr-only peer">
+                    <span class="w-11 h-6 bg-light-surface-variant rounded-full peer peer-checked:bg-light-primary transition-colors duration-state-change ease-state-change after:content-[&#39;&#39;] after:absolute after:top-0.5 after:left-0.5 after:bg-light-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-transform after:duration-state-change peer-checked:after:translate-x-5"></span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- Action Buttons Footer -->
+          <div class="flex flex-col-reverse sm:flex-row sm:items-center justify-end gap-gutter-md pt-gutter-sm">
+            <!-- Cancel -->
+            <!-- COMPONENT: button-secondary -->
+            <a href="../daily-task-manager-dashboard/DailyTaskManagerDashboard.html" data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" class="inline-flex items-center justify-center gap-gutter-sm px-gutter-lg py-2.5 rounded bg-light-surface-container-lowest text-light-primary border border-light-outline-variant hover:bg-light-surface-container-low focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-primary focus-visible:ring-offset-2 transition-colors duration-state-change ease-state-change">
+              <span class="font-label text-label-lg" data-design-text-token="label-lg">Cancel</span>
+            </a>
+
+            <!-- Save Changes -->
+            <!-- COMPONENT: button-with-icon -->
+            <button type="submit" data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" class="inline-flex items-center justify-center gap-gutter-sm px-gutter-xl py-2.5 rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-primary focus-visible:ring-offset-2 transition-colors duration-state-change ease-state-change shadow-md">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check</span>
+              <span class="font-label text-label-lg" data-design-text-token="label-lg">Save Changes</span>
+            </button>
+          </div>
+
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const form = document.getElementById('settingsForm');
+      const saveBanner = document.getElementById('saveBanner');
+      const editProfileBtn = document.getElementById('editProfileBtn');
+      const employeeNameInput = document.getElementById('employeeName');
+
+      editProfileBtn.addEventListener('click', () => {
+        employeeNameInput.focus();
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        saveBanner.classList.remove('hidden');
+        saveBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    })();
+  </script>
+
+
+</body></html>
